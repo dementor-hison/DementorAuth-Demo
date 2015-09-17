@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rl_help_layout"
+        android:layout_width="match_parent"
+        android:layout_height="174dp" >
+
+        <ImageView
+            android:id="@+id/iv_help_background1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@android:color/black" />
+
+        <ImageView
+            android:id="@+id/iv_help_step1_arrow"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/dementor_help_step1_arrow" />
+
+        <TextView
+            android:id="@+id/tv_help_step1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/iv_help_step1_arrow"
+            android:maxLines="7"
+            android:textColor="@android:color/white"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp" >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/dementor_help_frame_shadow" />
+
+        <ImageView
+            android:id="@+id/iv_help_step1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/dementor_help_frame" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/iv_help_background2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@android:color/black" />
+
+        <include
+            android:id="@+id/ll_icon1"
+            layout="@layout/dementor_select_icon_help_page1_icon" />
+
+        <include
+            android:id="@+id/ll_icon2"
+            layout="@layout/dementor_select_icon_help_page1_icon" />
+
+        <include
+            android:id="@+id/ll_icon3"
+            layout="@layout/dementor_select_icon_help_page1_icon" />
+
+        <include
+            android:id="@+id/ll_icon4"
+            layout="@layout/dementor_select_icon_help_page1_icon" />
+
+        <ImageView
+            android:id="@+id/iv_help_step2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="4dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/dementor_help_frame" />
+
+        <ImageView
+            android:id="@+id/iv_help_step2_arrow"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/dementor_help_step2_arrow" />
+
+        <TextView
+            android:id="@+id/tv_help_step2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/iv_help_step2_arrow"
+            android:layout_marginRight="20dp"
+            android:maxLines="3"
+            android:maxWidth="200dp"
+            android:textColor="@android:color/white"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+</LinearLayout>

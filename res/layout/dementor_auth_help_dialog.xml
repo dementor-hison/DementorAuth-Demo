@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/rl_help_layout"
+            android:layout_width="match_parent"
+            android:layout_height="174dp" >
+
+            <ImageView
+                android:id="@+id/iv_help_background1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tv_help_confirm_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:layout_margin="20dp"
+                android:textColor="@android:color/white"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_help_confirm_layout"
+            android:layout_width="match_parent"
+            android:layout_height="370dp" >
+
+            <FrameLayout
+                android:id="@+id/fl_lock_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/lock_green"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/dementor_auth_help_unlock" />
+
+                <ImageView
+                    android:id="@+id/lock"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/dementor_auth_help_lock" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fl_key1_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/iv_key1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/dementor_auth_help_key1" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fl_key2_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/iv_key2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/dementor_auth_help_key2" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fl_key3_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/key3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/dementor_auth_help_key3" />
+            </FrameLayout>
+
+            <ImageView
+                android:id="@+id/pointer"
+                android:layout_width="36dp"
+                android:layout_height="47dp"
+                android:src="@drawable/dementor_pointer" />
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/iv_help_background2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:src="@android:color/black" />
+    </LinearLayout>
+
+    <kr.co.dementorauth.ui.help.HelpBottomBar
+        android:id="@+id/helpBottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

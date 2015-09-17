@@ -1,0 +1,120 @@
+package kr.co.dementor.dementorauth_demo;
+
+import kr.co.dementorauth.DementorConfig;
+import kr.co.dementorauth.DementorAuthController;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+
+public class AuthActivity extends FragmentActivity implements DementorAuthController.OnDementerAuthListener {
+	private DementorAuthController mAuthController;
+	private TextView mTitle;
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		
+		setContentView(R.layout.a_auth_activity);
+		
+		mTitle = (TextView)this.findViewById(R.id.txtTitle);
+		mTitle.setText("그래픽 인증");
+		
+		ViewGroup vg = (ViewGroup)this.findViewById(R.id.reg_view);
+		// Back 버튼
+		this.findViewById(R.id.layoutBack).setOnClickListener(
+				new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						// 뒤로가기
+						mAuthController.back();
+					}
+				});
+
+		// 도움말 버튼
+		this.findViewById(R.id.layoutSetting).setOnClickListener(
+				new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						// 도움말 팝업
+						mAuthController.showHelp();
+					}
+				});
+		
+		// 디멘터 라이브러리 초기화
+		DementorConfig config = new DementorConfig(MainActivity.mHost, MainActivity.mCTN, MainActivity.mDeviceID);
+		config.setHighlightColor(Color.rgb(109, 195, 151));
+		config.setDisableColor(Color.rgb(150, 149, 149));
+		config.setIconBackgroundColor(Color.rgb(191, 225, 208));
+		
+		mAuthController = new DementorAuthController(this, this.getSupportFragmentManager(), config);
+		mAuthController.setOnDementerAuthListener(this);
+		
+		// 그래픽인증 등록 뷰 add
+		vg.addView(mAuthController.getView());
+		
+		// 그래픽인증 등록 시작
+		mAuthController.start();
+	}
+
+	@Override
+	protected void onDestroy() {
+		// 메모리 정리를 위해 반드시 호출
+		mAuthController.destroy();
+		super.onDestroy();
+	}
+
+	// DementorAuthController.OnDementerAuthListener
+	@Override
+	// 화면을 종료해야 될때 호출
+	public void needFinish() {
+		this.finish();
+	}
+	
+	@Override
+	// 사용자가 재등록을 원할때 호출
+	public void needReregister() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);		
+		builder.setTitle("재등록")       
+			.setMessage("재등록 필요")        
+			.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int whichButton) {
+					finish();
+				}
+			});
+		
+		AlertDialog dialog = builder.create();
+		dialog.show();
+	}
+	
+	@Override
+	public void onAuthFinished(String verificationCode, String errorCode, String errorInfo) {
+		// errorCode가 null일 경우 성공, errorCode에 따른 사후 처리 필요
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);		
+		builder.setTitle("결과 확인")       
+			.setMessage("[Verification Code]\n" + verificationCode +
+					"\n\n[Error Code]\n" + errorCode +
+					"\n\n[Error Info]\n" + errorInfo)        
+			.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int whichButton) {
+					finish();
+				}
+			})
+			.setNegativeButton("재시도", new DialogInterface.OnClickListener() {      
+				public void onClick(DialogInterface dialog, int whichButton) {
+					dialog.cancel();
+					
+					// 마지막 실행했던 통신을 재시도
+					mAuthController.retry();
+				}
+			});
+		
+		AlertDialog dialog = builder.create();
+		dialog.show();
+	}
+}

@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="horizontal" 
+    android:paddingBottom="5dp">
+
+    <ImageView
+        android:id="@+id/btnPre"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/dementor_btn_category_left_normal" />
+    
+    <FrameLayout
+        android:layout_width="0dp" 
+        android:layout_height="68dp"
+        android:layout_weight="1">
+        
+        <android.support.v4.view.ViewPager
+	        android:id="@+id/category_viewpager"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"/>
+        
+        <RelativeLayout 
+            android:layout_width="match_parent"
+	        android:layout_height="match_parent">
+            
+            <ImageView
+		        android:layout_width="68dp"
+		        android:layout_height="match_parent"
+		        android:layout_centerInParent="true"
+		        android:scaleType="fitXY"
+		        android:src="@drawable/dementor_category_background" />
+            
+        </RelativeLayout>
+
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/btnNext"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/dementor_btn_category_right_normal" />
+
+</LinearLayout>

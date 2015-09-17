@@ -1,0 +1,115 @@
+package kr.co.dementor.dementorauth_demo;
+
+import kr.co.dementorauth.DementorController;
+import kr.co.dementorauth.DementorController.DementorConnectRetry;
+import kr.co.dementorauth.DementorLog;
+import android.app.Activity;
+import android.content.Context;
+import android.telephony.TelephonyManager;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class MainActivity extends Activity implements DementorController.OnDementorFinishedListener {
+	String CTN;
+	String mDeviceID;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.a_main);
+		
+		TelephonyManager manager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+		
+		CTN = manager.getLine1Number();
+		mDeviceID = manager.getDeviceId();
+
+//		CTN = "01024993187";
+//		mDeviceID = "35428205398961";
+		
+		DementorLog.d("Info : " + CTN + " / " + mDeviceID);
+		
+		((ImageView) findViewById(R.id.btnTest)).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				DementorController.getInstance().auth(MainActivity.this, MainActivity.this.CTN, MainActivity.this.mDeviceID, "그래픽 인증", MainActivity.this);
+			}
+		});
+
+		((TextView) findViewById(R.id.btnReset)).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				DementorController.getInstance().register(MainActivity.this, MainActivity.this.CTN, MainActivity.this.mDeviceID, true, "그래픽 인증 등록", MainActivity.this);
+			}     
+		});
+
+		((TextView) findViewById(R.id.btnEnroll)).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				DementorController.getInstance().register(MainActivity.this, MainActivity.this.CTN, MainActivity.this.mDeviceID, false, "그래픽 인증 등록" , MainActivity.this);
+			}
+		});
+	}
+	
+	@Override
+	public void onBack(Activity arg0) {
+		arg0.finish();
+	}
+	
+	@Override
+	public void onDementorFinished(String verificationCode, String errCode, FragmentManager fm, int id, DementorConnectRetry retry) {
+		PaynowFragment pf = new PaynowFragment();
+		pf.veri = verificationCode;
+		pf.err = errCode;
+		pf.retry = retry;
+		
+		fm.beginTransaction().add(id, pf).commit();
+	}
+
+	public static class PaynowFragment extends Fragment implements View.OnClickListener {
+		private Button mDeattachButton, mRetryButton;
+		private TextView mVerificationText;
+		private TextView mErrorText;
+		
+		public String veri;
+		public String err;
+		public DementorConnectRetry retry;
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.paynow_fragment, container, false);
+
+			mDeattachButton = (Button) rootView.findViewById(R.id.deattachBtn);
+			mDeattachButton.setOnClickListener(this);
+			
+			mRetryButton = (Button) rootView.findViewById(R.id.retryBtn);
+			mRetryButton.setOnClickListener(this);
+			
+			mVerificationText = (TextView)rootView.findViewById(R.id.verificationText);
+			mVerificationText.setText(veri);
+			mErrorText = (TextView)rootView.findViewById(R.id.errorText);
+			mErrorText.setText(err);
+
+			return rootView;
+		}
+
+		@Override
+		public void onClick(View v) {
+			if (v == mDeattachButton) {
+				getFragmentManager().beginTransaction().remove(this).commit();
+				getActivity().finish();
+			}
+			
+			if (v == mRetryButton) {
+				retry.retry();
+			}
+		}
+	}
+
+}

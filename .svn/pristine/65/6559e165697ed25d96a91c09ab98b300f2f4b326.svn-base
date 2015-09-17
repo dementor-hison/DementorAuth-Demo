@@ -1,0 +1,118 @@
+package kr.co.dementor.dementorauth_demo;
+
+import kr.co.dementorauth.DementorConfig;
+import kr.co.dementorauth.DementorRegController;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+public class RegisterActivity extends FragmentActivity implements DementorRegController.OnDementerRegisterListener {
+	private DementorRegController mRegController;
+	private TextView mTitle;
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		
+		setContentView(R.layout.a_reg_activity);
+		
+		mTitle = (TextView)this.findViewById(R.id.txtTitle);
+		mTitle.setText("그래픽인증 등록");
+		
+		ViewGroup vg = (ViewGroup)this.findViewById(R.id.reg_view);
+		// Back 버튼
+		this.findViewById(R.id.layoutBack).setOnClickListener(
+				new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						// 뒤로가기
+						mRegController.back();
+					}
+				});
+
+		// 도움말 버튼
+		this.findViewById(R.id.layoutSetting).setOnClickListener(
+				new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						// 도움말 팝업
+						mRegController.showHelp();
+					}
+				});
+		
+		// 디멘터 라이브러리 초기화
+		DementorConfig config = new DementorConfig(MainActivity.mHost, MainActivity.mCTN, MainActivity.mDeviceID);
+		config.setHighlightColor(Color.rgb(109, 195, 151));
+		config.setDisableColor(Color.rgb(150, 149, 149));
+		config.setIconBackgroundColor(Color.rgb(191, 225, 208));
+		
+		mRegController = new DementorRegController(this, this.getSupportFragmentManager(), config);
+		mRegController.setOnDementerRegisterListener(this);
+		
+		// 그래픽인증 등록 뷰 add
+		vg.addView(mRegController.getView());
+		
+		// 그래픽인증 등록 시작
+		mRegController.start();
+	}
+
+	@Override
+	protected void onDestroy() {
+		// 메모리 정리를 위해 반드시 호출
+		mRegController.destroy();
+		super.onDestroy();
+	}
+
+	// DementorRegController.OnDementerRegisterListener
+	@Override
+	// 비밀번호 확인 화면으로 전환되었을때 호출
+	public void onConfirmFragmentAttached() {
+		mTitle.setText("비밀번호 확인");
+	}
+	
+	@Override
+	// 비밀번호 확인 화면이 닫혔을때 호출
+	public void onConfirmFragmentDeattaced() {
+		mTitle.setText("그래픽인증 등록");
+	}
+
+	@Override
+	// 화면을 종료해야 될때 호출
+	public void needFinish() {
+		this.finish();
+	}
+
+	@Override
+	// 진행중 오류가 발생하거나 입력이 완료되었을때 호출
+	public void onRegisterFinished(String verificationCode, String errorCode, String errorInfo) {
+		// errorCode가 null일 경우 성공, errorCode에 따른 사후 처리 필요
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);		
+		builder.setTitle("결과 확인")       
+			.setMessage("[Verification Code]\n" + verificationCode +
+					"\n\n[Error Code]\n" + errorCode +
+					"\n\n[Error Info]\n" + errorInfo)           
+			.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int whichButton) {
+					finish();
+				}
+			})
+			.setNegativeButton("재시도", new DialogInterface.OnClickListener() {      
+				public void onClick(DialogInterface dialog, int whichButton) {
+					dialog.cancel();
+					
+					// 마지막 실행했던 통신을 재시도
+					mRegController.retry();
+				}
+			});
+		
+		AlertDialog dialog = builder.create();
+		dialog.show();
+	}
+}

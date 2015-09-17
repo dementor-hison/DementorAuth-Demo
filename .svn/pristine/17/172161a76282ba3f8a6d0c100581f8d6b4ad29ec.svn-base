@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Dementor 그래픽인증 데모</string>
+<!--     <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    
+    <string name="dementor_reg">그래픽 인증 등록</string>
+    <string name="dementor_img_description">img</string>
+
+    <string name="dementor_text_key_create">그래픽 KEY 생성</string>
+    <string name="dementor_text_key_description">자물쇠로 사용 할 아이콘을 선택하세요</string>
+    
+    <string name="dementor_text_key_state_title">현재 상태</string>    
+    
+    <string name="dementor_dialog_ok">확인</string>
+    <string name="dementor_dialog_false_message">중복된 키를 설정할 수 없습니다.</string>
+    <string name="dementor_dialog_false_message_refresh">다시 선택하여주세요.</string>
+    
+    <string name="dementor_dialog_option">옵션</string>
+    <string name="dementor_dialog_authkey_refresh">보안키 재설정</string>
+    <string name="dementor_dialog_help">도움말</string>
+    
+    <string name="dementor_dialog_hint">힌트</string>
+    
+    <string name="dementor_guide_checkbox">다시 보지 않기</string>
+    
+    <string name="dementor_re_enroll">비밀번호 재발급</string>
+    <string name="dementor_show_hint">힌트보기</string> -->
+    
+</resources>

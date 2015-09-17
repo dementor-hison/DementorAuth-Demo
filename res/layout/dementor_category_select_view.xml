@@ -1,0 +1,34 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="41dp"
+    android:background="@drawable/dementor_category_bg"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/btnPre"
+        android:layout_width="27.5dp"
+        android:layout_height="match_parent"
+		android:scaleType="fitCenter"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:visibility="invisible"
+        android:src="@drawable/dementor_category_prev" />
+		
+  	<kr.co.dementorauth.ui.CustomViewPager
+        android:id="@+id/category_viewpager"
+		android:layout_weight="1"
+	    android:layout_width="0dp"
+	    android:layout_height="match_parent"/> 
+
+	<ImageView
+        android:id="@+id/btnNext"
+        android:layout_width="27.5dp"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:visibility="invisible"
+        android:src="@drawable/dementor_category_next" /> 
+
+</LinearLayout>

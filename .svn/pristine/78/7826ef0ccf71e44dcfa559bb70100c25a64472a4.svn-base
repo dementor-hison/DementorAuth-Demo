@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+    	android:layout_height="match_parent" 
+    	android:numColumns="5"
+    	android:stretchMode="columnWidth"
+    	android:choiceMode="none"
+    	android:listSelector="@android:color/transparent" 
+    	android:layout_margin="5dp"
+    	android:scrollbars="none">
+    </GridView>
+    
+    <kr.co.dementorauth.ui.FullScrollView
+        android:id="@+id/scrollView"
+        android:scrollbars="none"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+    	android:layout_height="match_parent">
+    	
+        <LinearLayout 
+            android:id="@+id/scrollLayout"
+			android:orientation="vertical"
+            android:layout_width="wrap_content"
+    		android:layout_height="wrap_content">
+        </LinearLayout>
+        
+    </kr.co.dementorauth.ui.FullScrollView >
+
+</FrameLayout>

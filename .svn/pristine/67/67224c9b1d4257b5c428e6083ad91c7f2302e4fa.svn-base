@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3F3E3D"
+    android:orientation="vertical" >
+    
+  	<ImageView
+	    android:scaleType="fitCenter"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center_horizontal"
+	    android:src="@drawable/dementor_auth_help_bg" />
+  	
+  	<FrameLayout 
+  	    android:layout_marginTop="155dp"
+  	    android:layout_gravity="center_horizontal"
+  	    android:background="@drawable/dementor_auth_help_icons"
+  	    android:layout_width="320dp"
+  	    android:layout_height="320dp">
+  	    
+	   	<ImageView 
+	   	    android:layout_gravity="top"
+	   	    android:id="@+id/lock_green"
+		    android:src="@drawable/dementor_auth_help_lock_green"
+		    android:layout_marginLeft="3dp"
+		    android:layout_marginTop="195dp"
+		    android:layout_width="57dp"
+		    android:layout_height="57dp"/>
+  	    
+	   	<ImageView 
+	   	    android:id="@+id/lock"
+	   	    android:layout_gravity="top"
+		    android:src="@drawable/dementor_auth_help_lock"
+		    android:layout_marginLeft="3dp"
+		    android:layout_marginTop="195dp"
+		    android:layout_width="57dp"
+		    android:layout_height="57dp"/>
+  	    
+  	    <ImageView 
+  	        android:id="@+id/key1"
+  	        android:layout_gravity="top"
+		    android:src="@drawable/dementor_auth_help_key1"
+		    android:layout_marginLeft="68dp"
+		    android:layout_marginTop="4dp"
+		    android:layout_width="57dp"
+		    android:layout_height="57dp"/>
+  	    
+   	    <ImageView 
+   	        android:id="@+id/key2"
+   	        android:layout_gravity="top"
+		    android:src="@drawable/dementor_auth_help_key2"
+		    android:layout_marginLeft="195dp"
+		    android:layout_marginTop="68dp"
+		    android:layout_width="57dp"
+		    android:layout_height="57dp"/>
+   	    
+	    <ImageView 
+	        android:id="@+id/key3"
+	        android:layout_gravity="top"
+		    android:src="@drawable/dementor_auth_help_key3"
+		    android:layout_marginLeft="260dp"
+		    android:layout_marginTop="196dp"
+		    android:layout_width="57dp"
+		    android:layout_height="57dp"/>
+	    
+   	   	<ImageView
+   	   	    android:id="@+id/pointer" 
+   	   	    android:layout_gravity="top"
+		    android:src="@drawable/dementor_pointer"
+		    android:layout_marginLeft="142dp"
+		    android:layout_marginTop="138dp"
+		    android:layout_width="36dp"
+		    android:layout_height="46.5dp"/>
+  	    
+  	</FrameLayout>
+	    
+	<kr.co.dementorauth.help.HelpBottomBar
+		android:id="@+id/helpBottomBar"
+		android:layout_gravity="bottom"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content" />
+
+</FrameLayout>

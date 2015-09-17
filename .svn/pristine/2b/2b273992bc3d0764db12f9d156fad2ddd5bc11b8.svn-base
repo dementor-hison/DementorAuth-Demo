@@ -1,0 +1,48 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="0dip"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:padding="0dip"
+    tools:context=".DementorRegActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="0dip"
+        android:orientation="vertical"
+        android:padding="0dip" >
+
+        <kr.co.dementorauth.ui.StateView
+            android:id="@+id/descriptionView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13.5dp"/>
+
+        <kr.co.dementorauth.ui.InputView
+            android:id="@+id/inputView"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="3.5dp"
+           	android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        
+        <LinearLayout
+           	android:layout_width="match_parent"
+            android:layout_height="0dp" 
+            android:layout_weight="1" 
+            android:gravity="bottom|center_horizontal">
+            
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/dementor_logo"
+            android:scaleType="fitXY"
+            android:paddingBottom="15dp" />
+        
+        </LinearLayout>
+        
+    </LinearLayout>
+
+</FrameLayout>

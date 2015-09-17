@@ -1,0 +1,43 @@
+package kr.co.dementor.dementorauth_demo;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class MainActivity extends Activity  {
+	static String mUserID;
+	static String mDeviceID;
+	static String mHost;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.a_main);
+		
+		// 디멘터 테스트 서버
+		mHost = "http://118.33.90.76:7025";
+		
+		// 테스트용 임시 아이디
+		mUserID = "01011112222";
+		mDeviceID = "01011112222";
+		
+		((ImageView) findViewById(R.id.btnTest)).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(MainActivity.this, AuthActivity.class);
+				startActivity(intent);
+			}
+		});
+
+		((TextView) findViewById(R.id.btnEnroll)).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+				startActivity(intent);
+			}
+		});
+	} 
+}

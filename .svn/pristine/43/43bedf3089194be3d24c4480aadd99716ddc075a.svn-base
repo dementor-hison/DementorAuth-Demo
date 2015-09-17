@@ -1,0 +1,71 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="0dip"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:padding="0dip"
+    tools:context=".DementorRegActivity" >
+
+   <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="0dip"
+        android:orientation="vertical"
+        android:padding="0dip" >
+
+        <kr.co.dementorauth.widget.TitleMenuView
+            android:id="@+id/titleView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        
+		<kr.co.dementorauth.state.AuthStateView
+            android:id="@+id/descriptionView"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        
+        <kr.co.dementorauth.widget.AuthView
+            android:id="@+id/authView"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center_horizontal"
+           	android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        
+        <LinearLayout
+           	android:layout_width="match_parent"
+            android:layout_height="0dp" 
+            android:layout_weight="1" 
+            android:orientation="vertical"
+            android:gravity="bottom|center_horizontal">
+            
+	        <TextView
+	            android:id="@+id/need_rereg"
+	            android:textColor="#47ad2b"
+	            android:textSize="17sp"
+	            android:textStyle="normal"
+	            android:text="그래픽인증 비밀번호 재발급"
+	            android:gravity="center"
+	            android:paddingBottom="15dp"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"/>
+            
+            <ImageView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/dementor_logo"
+	            android:scaleType="fitXY"
+	            android:paddingBottom="15dp" />
+        
+        </LinearLayout>
+        
+    </LinearLayout>
+    
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </FrameLayout>
+
+</FrameLayout>

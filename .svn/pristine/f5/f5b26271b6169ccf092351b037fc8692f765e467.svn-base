@@ -1,0 +1,57 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="0dip"
+    android:orientation="vertical"
+    android:padding="0dip"
+    tools:context=".DementorRegActivity" >
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <kr.co.dementorauth.widget.TitleMenuView
+            android:id="@+id/titleView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <kr.co.dementorauth.state.SelectIconStateView
+            android:id="@+id/descriptionView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <kr.co.dementorauth.category.CategorySelectView
+                android:id="@+id/categoryMenuView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <kr.co.dementorauth.select_icon.SelectIconView
+                android:id="@+id/selectIconView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ffffff" />
+            
+        </LinearLayout>
+        
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/animationView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </FrameLayout>
+    
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </FrameLayout>
+
+</FrameLayout>

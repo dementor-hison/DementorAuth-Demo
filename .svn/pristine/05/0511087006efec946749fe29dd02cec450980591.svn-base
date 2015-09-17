@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:background="#30000000"
+	android:gravity="center">
+    
+    <LinearLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+    	android:orientation="vertical">
+    	<ImageView
+	        android:layout_width="250dp"
+	        android:layout_height="223dp"
+	        android:layout_marginTop="50dp"
+	        android:scaleType="fitXY"
+	        android:src="@drawable/dementor_help_join"
+        />
+    
+    	<TextView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="50dp"
+	        android:gravity="center"
+	        android:text="설정한 자물쇠로\n열쇠1, 열쇠2, 열쇠3을\n순서대로 넣어줍니다."
+	        android:textColor="#FFFFFF"
+	        android:textSize="20sp"
+        />
+    
+    </LinearLayout>
+    
+    
+
+</LinearLayout>
